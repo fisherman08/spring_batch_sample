@@ -8,3 +8,5 @@ spring:
       url: jdbc:mysql://127.0.0.1:3317/main_db
       username: scott
       password: tiger
+  flyway:
+    locations: "classpath:db/migration/origin"

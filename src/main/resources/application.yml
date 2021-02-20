@@ -1,4 +1,6 @@
 spring:
+  batch:
+    initialize-schema: always
   datasource:
     origin:
       url: jdbc:mysql://127.0.0.1:3316/main_db

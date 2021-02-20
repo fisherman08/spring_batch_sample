@@ -1,0 +1,32 @@
+version: '3'
+services:
+  db_origin:
+    image: mysql:5.7.29
+    volumes:
+      - ./db/data/origin:/var/lib/mysql
+      - ./db/init:/docker-entrypoint-initdb.d
+      - ./db/conf:/etc/mysql/conf.d
+    environment:
+      MYSQL_USER: scott
+      MYSQL_PASSWORD: tiger
+      MYSQL_ROOT_PASSWORD: tiger
+      MYSQL_MAIN_DATABASE: main_db
+      MYSQL_TEST_DATABASE: test_db
+      TZ: Asia/Tokyo
+    ports:
+      - 3316:3306
+  db_dest:
+    image: mysql:5.7.29
+    volumes:
+      - ./db/data/dest:/var/lib/mysql
+      - ./db/init:/docker-entrypoint-initdb.d
+      - ./db/conf:/etc/mysql/conf.d
+    environment:
+      MYSQL_USER: scott
+      MYSQL_PASSWORD: tiger
+      MYSQL_ROOT_PASSWORD: tiger
+      MYSQL_MAIN_DATABASE: main_db
+      MYSQL_TEST_DATABASE: test_db
+      TZ: Asia/Tokyo
+    ports:
+      - 3317:3306
